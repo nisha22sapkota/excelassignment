@@ -1,0 +1,42 @@
+Attribute VB_Name = "Module1"
+Sub totalVolume()
+
+  Dim ticker As String
+
+  Dim total As LongLong
+  
+  total = 0
+  
+  lastrow = Cells(Rows.Count, 1).End(xlUp).Row
+
+  Dim num As Integer
+  num = 2
+
+  For i = 2 To lastrow
+
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+
+      ticker = Cells(i, 1).Value
+
+      total = total + Cells(i, 7).Value
+
+      Range("I" & num).Value = ticker
+
+      Range("J" & num).Value = total
+
+      num = num + 1
+      
+      total = 0
+
+    Else
+
+      total = total + Cells(i, 7).Value
+
+    End If
+
+  Next i
+
+End Sub
+
+
+
